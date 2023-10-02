@@ -1,4 +1,4 @@
-const DIR = "src";
+const DIR = 'src';
 
 const server = require(`../${DIR}/server.js`);
 const db = require(`../${DIR}/database/db.js`);
@@ -19,7 +19,7 @@ async function request(pathname, options = {}) {
   const app = server.listen(0);
   const { port } = app.address();
   const url = new URL(pathname, `http://localhost:${port}`);
-  options.headers = { ...options.headers, connection: "close" };
+  options.headers = { ...options.headers, connection: 'close' };
   const response = await fetch(url, options);
   app.close();
   const body = await response.text();
@@ -28,8 +28,8 @@ async function request(pathname, options = {}) {
 }
 
 function get_sid(headers) {
-  const [sid_cookie] = headers["set-cookie"].split(".");
-  const encoded_sid = sid_cookie.replace("sid=s%3A", "");
+  const [sid_cookie] = headers['set-cookie'].split('.');
+  const encoded_sid = sid_cookie.replace('sid=s%3A', '');
   return decodeURIComponent(encoded_sid);
 }
 

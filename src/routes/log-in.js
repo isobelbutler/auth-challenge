@@ -43,7 +43,6 @@ function post(req, res) {
         sameSite: 'lax',
         httpOnly: true,
       });
-      // Why don't we redirect to their session ID?
       res.redirect(`/confessions/${user.id}`);
     }
   });
